@@ -7,7 +7,7 @@ Float
 Degree
 ClrHome
 Lbl 0
-Menu(" ANALYT V 3.2.2 ","LAGEBEZIEHUNG",L,"UMRECHNUNG",U,"VEKTOROP.",V,"VIERECK",4E,"ENDE",E
+Menu(" ANALYT V 3.2.2 ","LAGEBEZIEHUNG",L,"UMRECHNUNG",U,"VEKTOROP.",V,"ENDE",E
 Lbl L
 Menu("LAGEBEZIEHUNGEN","2 PUNKTE",PP,"PUNKT+GERADE",PG,"2 GERADEN",GG,"PUNKT+EBENE",PE,"GERADE+EBENE",GE,"2 EBENEN",EE,"ZURÜCK",0
 Lbl U
@@ -196,8 +196,6 @@ Output(5,1,"Y=
 Output(6,1,"Z=
 Goto E
 Lbl 4
-"{⌊ATMP2(2)⌊ATMP(3)-⌊ATMP2(3)⌊ATMP(2),⌊ATMP2(3)⌊ATMP(1)-⌊ATMP2(1)⌊ATMP(3),⌊ATMP2(1)⌊ATMP(2)-⌊ATMP2(2)⌊ATMP(1?⌊ATMPO
-"abs((sum((⌊ATMP1-⌊ATMP3)⌊ATMPO)/√(sum(⌊ATMPO²)))²?W
 [[sum(⌊ATMP2²),sum(­⌊ATMP2⌊ATMP),sum((⌊ATMP3-⌊ATMP1)⌊ATMP2)][sum(⌊ATMP⌊ATMP2),sum(­⌊ATMP²),sum((⌊ATMP3-⌊ATMP1)⌊ATMP→[J]
 rref([J]→[J]
 Disp "WINDSCHIEF
@@ -424,7 +422,7 @@ Lbl 55
 ClrHome
 {⌊ATMP2(2)⌊ATMP(3)-⌊ATMP2(3)⌊ATMP(2),⌊ATMP2(3)⌊ATMP(1)-⌊ATMP2(1)⌊ATMP(3),⌊ATMP2(1)⌊ATMP(2)-⌊ATMP2(2)⌊ATMP(1→⌊ATMP3
 sum(⌊ATMP3⌊ATMP1→D
-If prod(⌊ATMP3=int(⌊ATMP3:Then
+If D=int(D) and prod(⌊ATMP3=int(⌊ATMP3:Then
 gcd(gcd(abs(D),abs(⌊ATMP3(1))),gcd(abs(⌊ATMP3(2)),abs(⌊ATMP3(3→Q
 If not(Q:1→Q
 ⌊ATMP3/Q→⌊ATMP3:D/Q→D:End
@@ -493,67 +491,7 @@ Disp "VEKTOR 3
 Listmatr(⌊ATMP1,⌊ATMP2,⌊ATMP,[J]
 Disp "SPATPRODUKT:
 Disp det([J]
-Pause :ClrHome
-Goto E
-Lbl 4E
-29→θ
-{3,4→dim([J]
-For(J,1,4
 ClrHome
-Disp "PUNKT
-Output(1,7,J
-Goto IV:Lbl 41
-⌊ATMP(1→[J](1,J
-⌊ATMP(2→[J](2,J
-⌊ATMP(3→[J](3,J
-End
-Matrlist([J],⌊ATMP,⌊ATMP1,⌊ATMP2,⌊ATMP3
-Listmatr(⌊ATMP1-⌊ATMP,⌊ATMP2-⌊ATMP,⌊ATMP3-⌊ATMP,[J]
-ref([J]→[J]
-If [J](3,3
-Then
-Disp "NICHT EBEN
-Goto E
-End
-0→P:{3,3→dim([J]
-Listmatr(⌊ATMP1-⌊ATMP,⌊ATMP2-⌊ATMP3,{0,0,0},[J]
-ref([J]→[J]
-If 0=[J](2,2
-1→P
-Listmatr(⌊ATMP2-⌊ATMP1,⌊ATMP3-⌊ATMP,{0,0,0},[J]
-ref([J]→[J]
-If 0=[J](2,2
-P+1→P
-If P=1:Then
-Disp "TRAPEZ
-Goto E
-End
-If not(P
-Then
-If (sum((⌊ATMP-⌊ATMP1)²)=sum((⌊ATMP1-⌊ATMP2)²) and sum((⌊ATMP2-⌊ATMP3)²)=sum((⌊ATMP3-⌊ATMP)²)) or (sum((⌊ATMP1-⌊ATMP2)²)=sum((⌊ATMP2-⌊ATMP3)²) and sum((⌊ATMP3-⌊ATMP)²)=sum((⌊ATMP-⌊ATMP1)²
-Then
-Disp "DRACHENVIERECK
-Else
-Disp "UNREGELMÄSSIG
-End
-Else
-If 0≠sum((⌊ATMP-⌊ATMP1)(⌊ATMP1-⌊ATMP2
-Then
-If sum((⌊ATMP-⌊ATMP1)²)=sum((⌊ATMP1-⌊ATMP2)²) and sum((⌊ATMP1-⌊ATMP2)²)=sum((⌊ATMP2-⌊ATMP3)²
-Then
-Disp "RAUTE
-Else
-Disp "PARALLELOGRAMM
-End
-Else
-If sum((⌊ATMP-⌊ATMP1)²)=sum((⌊ATMP1-⌊ATMP2)²
-Then
-Disp "QUADRAT
-Else
-Disp "RECHTECK
-End
-End
-End
-Pause 
 Lbl E
-DelVar ⌊ATMPDelVar ⌊ATMP1DelVar ⌊ATMP2DelVar ⌊ATMP3DelVar ⌊ATMPODelVar ADelVar BDelVar CDelVar DDelVar θDelVar TDelVar SDelVar LDelVar WDelVar EDelVar FDelVar GDelVar HDelVar QDelVar JDelVar IDelVar KDelVar XDelVar YDelVar Z
+DelVar ⌊ATMP
+DelVar ⌊ATMP1DelVar ⌊ATMP2DelVar ⌊ATMP3DelVar ⌊ATMPODelVar ADelVar BDelVar CDelVar DDelVar θDelVar TDelVar SDelVar LDelVar WDelVar EDelVar FDelVar GDelVar HDelVar QDelVar JDelVar IDelVar KDelVar XDelVar YDelVar Z
