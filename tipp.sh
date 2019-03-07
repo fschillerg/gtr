@@ -20,7 +20,7 @@ if [ ! -f $1 ]; then
 fi
 
 if [ $2 ]; then
-    sed '/^\"/d' $1 | sed '/^[[:space:]]*$/d' - > $2
+    sed '/^\"[^→]*$/d' $1 | sed '/^ *$/d' - > $2
 else
-    sed '/^\"/d' $1 | sed '/^[[:space:]]*$/d' -
+    sed '/^\"[^→]*$/d' $1 | sed '/^ *$/d' -
 fi

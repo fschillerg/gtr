@@ -22,7 +22,7 @@ if (-not ($in | Test-Path)) {
     exit 1
 }
 
-$lines = Get-Content $in | Select-String -pattern '^\"' -notmatch | Where {$_.ToString().Trim().Length -gt 0}
+$lines = Get-Content $in | Select-String -pattern '^\"[^→]*$' -notmatch | Where {$_.ToString().Trim().Length -gt 0}
 
 if ($out) {
     foreach ($line in $lines) {
